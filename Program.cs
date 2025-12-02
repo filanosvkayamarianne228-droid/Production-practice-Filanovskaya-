@@ -69,6 +69,8 @@ namespace Проект_1
         }
     }
     internal class Program : ProgramBase
+
+     // Cоздание  RequestRepository
     {
         static RequestRepository repository = new RequestRepository();
         static void Main(string[] args)
@@ -119,8 +121,7 @@ namespace Проект_1
                 Console.Clear();
             }
         }
-        // Обновление заявок
-
+        // Обновление заявок при вводе 
         private static void UpdateRequest()
         {
             Console.Clear();
@@ -413,6 +414,7 @@ namespace Проект_1
             }
         }
 
+        // При проверке данных
         private static void DisplayRequestDetails(Request request)
         {
             Console.WriteLine($"№{request.Id}");
@@ -438,7 +440,7 @@ namespace Проект_1
             return int.TryParse(input, out id) && id > 0;
         }
 
-        // Обработка ошибок
+        // Обработка ошибок при вводе 
         private static void HandleError(string errorMessage)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -483,7 +485,7 @@ namespace Проект_1
         }
 
     }
-
+     //Cоздаем базовый класс для работы с данными
     internal class ProgramBase
     {
         private const string DATA_FILE = "requests.json";
