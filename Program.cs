@@ -11,40 +11,61 @@ namespace Проект_1
 {
     public class Request
     {
+        // Уникальный идентификатор заявки (автоматически генерируется)
         public int Id { get; set; }
+        // Детальное описание проблемы или запроса
         public string Description { get; set; }
+        // Текущее состояние заявки (Новая, В работе, Выполнена, Закрыта)
         public string Status { get; set; }
+        // Дата и время создания заявки (устанавливается автоматически)
         public DateTime CreatedAt { get; set; }
+        // ФИО сотрудника, который подал заявку
         public string Applicant { get; set; }
+        // ФИО сотрудника IT-отдела, назначенного для решения проблемы
         public string Executor { get; set; }
+        // Дублирующее поле для ФИО заявителя (для совместимости)
         public object ClientName { get; internal set; }
+        // Подразделение или отдел, из которого поступила заявка
         public string Department { get; internal set; }
+
+        // Категория проблемы (Оборудование, ПО, Сеть и т.д.)
         public string Category { get; internal set; }
+        // Дата и время завершения работы по заявке
         public string CompletedAt { get; internal set; }
     }
 
     public class RequestRepository
     {
+        // Коллекция для хранения всех заявок в памяти
         private List<Request> _requests = new List<Request>();
+        // Счетчик для генерации уникальных идентификаторов
         private int _currentId = 1;
 
+
+        // Метод для добавления новой заявки
         public void Add(Request request)
         {
+            // Присвоение уникального ID
             request.Id = _currentId++;
+            // Установка текущей даты и времени создания запроса
             request.CreatedAt = DateTime.Now;
+            // Добавление в коллекцию список 
             _requests.Add(request);
-        }
+        } 
 
+        // Получение всех заявок 
         public List<Request> GetAll()
         {
             return _requests;
         }
 
+        // Поиск заявки по уникальному идентификатору
         public Request GetById(int id)
         {
             return _requests.FirstOrDefault(r => r.Id == id);
         }
 
+        // Фильтрация заявок по статусу
         public List<Request> FindByStatus(string status)
         {
             return _requests
@@ -52,17 +73,20 @@ namespace Проект_1
                 .ToList();
         }
 
+        // Обновление данных существующей заявки
         public void Update(Request request)
-        {
+
+        {     // Поиск заявки по ID
             var existing = GetById(request.Id);
             if (existing != null)
             {
+                // Обновление полей заявки
                 existing.Description = request.Description;
                 existing.Status = request.Status;
                 existing.Executor = request.Executor;
             }
         }
-
+        // Фильтрация заявок по категории (требует доработки)
         internal List<Request> FindByCategory(string category)
         {
             throw new NotImplementedException();
