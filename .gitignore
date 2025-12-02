@@ -1,0 +1,58 @@
+#Игнорируем временные файлы Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.tmp
+
+# Игнорируем пакеты NuGet
+packages/
+*.nupkg
+
+# Игнорируем конфигурационные файлы
+App.config
+*.user
+*.pubxml
+
+# Общие игнорируемые файлы
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+
+# Игнорируем файлы автосохранения
+*.autosave
+*.swp
+*.swo
+
+# Игнорируем файлы документации
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Игнорируем файлы сборки
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+
+# Игнорируем файлы отладки
+*.log
+*.tlog
+*.pid
+
+# Игнорируем файлы с результатами тестирования
+TestResult.xml
+
+# Игнорируем файлы с кодировкой UTF-8 BOM
+*.utf8.bom
+
+# Игнорируем файлы с настройками IDE
+.idea/
+.vscode/
